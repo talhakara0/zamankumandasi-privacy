@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Silme Talebi - Zaman Kumandası</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .content h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 2em;
+            border-bottom: 3px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+        
+        .content h3 {
+            color: #555;
+            margin: 30px 0 20px 0;
+            font-size: 1.4em;
+        }
+        
+        .content p, .content li {
+            margin-bottom: 12px;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .content ul {
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+        
+        .warning-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+        }
+        
+        .contact-box {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .contact-box h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .email-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 15px 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .email-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .form-container {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #e0e6ff;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin: 25px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f4ff);
+            border-left: 5px solid #667eea;
+            border-radius: 0 15px 15px 0;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -20px;
+            top: 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .step h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.9;
+            margin-top: 40px;
+            padding: 20px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .data-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .data-type {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .data-type h4 {
+            color: #2d3436;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .data-type p {
+            color: #636e72;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗑️ Veri Silme Talebi</h1>
+            <p>Zaman Kumandası - Ebeveyn Kontrol Uygulaması</p>
+        </div>
+        
+        <div class="content">
+            <h2>📋 Verilerinizi Silme Hakkınız</h2>
+            <p>Zaman Kumandası uygulamasında saklanan tüm kişisel verilerinizi silme hakkına sahipsiniz. Bu sayfada veri silme talebinizi kolayca oluşturabilir ve takip edebilirsiniz.</p>
+            
+            <div class="warning-box">
+                <h3>⚠️ ÖNEMLİ UYARI</h3>
+                <p><strong>Veri silme işlemi geri alınamaz!</strong> Tüm hesap bilgileriniz, uygulama kullanım verileri ve ayarlarınız kalıcı olarak silinecektir.</p>
+            </div>
+            
+            <h3>🔍 Hangi Veriler Silinecek?</h3>
+            <div class="data-types">
+                <div class="data-type">
+                    <h4>👤 Hesap Bilgileri</h4>
+                    <p>E-posta adresi, kullanıcı tipi, eşleştirme kodları</p>
+                </div>
+                <div class="data-type">
+                    <h4>📱 Uygulama Verileri</h4>
+                    <p>Kullanım süreleri, limitler, engelleme ayarları</p>
+                </div>
+                <div class="data-type">
+                    <h4>👨‍👩‍👧‍👦 Aile Bağlantıları</h4>
+                    <p>Ebeveyn-çocuk ilişkileri, paylaşılan veriler</p>
+                </div>
+                <div class="data-type">
+                    <h4>💎 Premium Bilgileri</h4>
+                    <p>Satın alma kayıtları, premium özellik ayarları</p>
+                </div>
+            </div>
+            
+            <h3>🚀 Veri Silme Süreci</h3>
+            <div class="steps">
+                <div class="step">
+                    <h4>Talep Gönderimi</h4>
+                    <p>Aşağıdaki formu doldurarak veya e-posta göndererek veri silme talebinizi oluşturun.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Kimlik Doğrulama</h4>
+                    <p>Güvenlik için kayıtlı e-posta adresinizden talep gönderdiğinizi doğrulayacağız.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>İşleme Alınma</h4>
+                    <p>Talebiniz 24 saat içinde incelenmeye alınır ve size onay e-postası gönderilir.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Veri Silme</h4>
+                    <p>Onayınızdan sonra 48 saat içinde tüm verileriniz sistemlerimizden kalıcı olarak silinir.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Silme Onayı</h4>
+                    <p>İşlem tamamlandığında size silme onayı e-postası gönderilir.</p>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <h3>⏱️ İşlem Süresi</h3>
+                <p><strong>Toplam Süre:</strong> Maksimum 72 saat<br>
+                <strong>Acil Durumlar:</strong> 24 saat içinde öncelik verilir</p>
+            </div>
+            
+            <h2>📝 Veri Silme Talep Formu</h2>
+            <div class="form-container">
+                <form action="mailto:talhakara0@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="email">📧 E-posta Adresiniz:</label>
+                        <input type="email" id="email" name="email" required placeholder="Kayıtlı e-posta adresinizi girin">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userType">👤 Kullanıcı Tipi:</label>
+                        <select id="userType" name="userType" required>
+                            <option value="">Seçiniz</option>
+                            <option value="parent">Ebeveyn</option>
+                            <option value="child">Çocuk</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">🤔 Silme Sebebi (Opsiyonel):</label>
+                        <select id="reason" name="reason">
+                            <option value="">Seçiniz</option>
+                            <option value="no-longer-needed">Artık ihtiyacım yok</option>
+                            <option value="privacy-concerns">Gizlilik endişeleri</option>
+                            <option value="switching-apps">Başka uygulama kullanacağım</option>
+                            <option value="technical-issues">Teknik sorunlar</option>
+                            <option value="other">Diğer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additionalInfo">💬 Ek Bilgiler (Opsiyonel):</label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Varsa ek açıklamalarınızı yazabilirsiniz"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" required>
+                            Veri silme işleminin geri alınamaz olduğunu anlıyorum ve onaylıyorum.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">📤 Veri Silme Talebi Gönder</button>
+                </form>
+            </div>
+            
+            <div class="contact-box">
+                <h3>📞 Alternatif İletişim Yöntemleri</h3>
+                <p>Form çalışmıyorsa direkt e-posta gönderebilirsiniz:</p>
+                
+                <a href="mailto:talhakara0@gmail.com?subject=Zaman%20Kumandası%20-%20Veri%20Silme%20Talebi&body=Merhaba,%0D%0A%0D%0AZaman%20Kumandası%20uygulamasından%20tüm%20verilerimi%20silmek%20istiyorum.%0D%0A%0D%0AKayıtlı%20E-posta:%20[E-POSTA%20ADRESİNİZ]%0D%0AKullanıcı%20Tipi:%20[Ebeveyn/Çocuk]%0D%0ASilme%20Sebebi:%20[SEBEBİNİZ]%0D%0A%0D%0ABu%20işlemin%20geri%20alınamaz%20olduğunu%20anlıyorum.%0D%0A%0D%0ATeşekkürler." class="email-button">
+                    📨 E-posta Gönder
+                </a>
+                
+                <a href="https://wa.me/1234567890?text=Merhaba,%20Zaman%20Kumandası%20uygulamasından%20verilerimi%20silmek%20istiyorum." class="email-button">
+                    💬 WhatsApp Mesajı
+                </a>
+                
+                <p><small><strong>Yanıt Süresi:</strong> 24 saat içinde</small></p>
+            </div>
+            
+            <h3>❓ Sık Sorulan Sorular</h3>
+            
+            <h4>🔄 Silinen verileri geri alabilir miyim?</h4>
+            <p>Hayır, veri silme işlemi kalıcıdır ve geri alınamaz. Yeni bir hesap oluşturmanız gerekir.</p>
+            
+            <h4>👨‍👩‍👧‍👦 Çocuk hesabını nasıl silerim?</h4>
+            <p>Çocuk hesapları için ebeveyn hesabından talep gönderilmelidir. Ebeveyn onayı gereklidir.</p>
+            
+            <h4>💎 Premium üyeliğim ne olur?</h4>
+            <p>Premium üyeliğiniz iptal edilir. Google Play Store üzerinden iade talebi oluşturabilirsiniz.</p>
+            
+            <h4>⏰ İşlem ne kadar sürer?</h4>
+            <p>Talep aldığımız andan itibaren maksimum 72 saat içinde tüm verileriniz silinir.</p>
+            
+            <h4>📱 Uygulama kullanmaya devam edebilir miyim?</h4>
+            <p>Veriler silindikten sonra uygulamayı kullanmak için yeni bir hesap oluşturmanız gerekir.</p>
+            
+            <h4>🔒 Verilerim gerçekten silinir mi?</h4>
+            <p>Evet, tüm verileriniz Firebase veritabanından ve yerel cache'lerden kalıcı olarak silinir.</p>
+            
+            <div class="info-box">
+                <h3>🔐 Gizlilik Garantisi</h3>
+                <p>Veri silme talebiniz işlendikten sonra hiçbir bilginiz sistemlerimizde kalmaz. Bu işlem GDPR ve diğer veri koruma yasalarına tam uyumludur.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Zaman Kumandası | <a href="privacy.html">Gizlilik Politikası</a> | <a href="account-deletion.html">Hesap Silme</a></p>
+            <p>Ebeveyn Kontrol Uygulaması - Güvenilir Dijital Ebeveynlik</p>
+        </div>
+    </div>
+</body>
+</html>
