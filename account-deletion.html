@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Silme - Zaman Kumandası</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        .content p, .content li {
+            margin-bottom: 10px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .contact-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .contact-box h3 {
+            color: #0c5460;
+            margin-bottom: 15px;
+        }
+        
+        .email-link {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .email-link:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 30px;
+        }
+        
+        .steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 20px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗑️ Hesap Silme</h1>
+            <p>Zaman Kumandası - Ebeveyn Kontrol Uygulaması</p>
+        </div>
+        
+        <div class="content">
+            <h2>📋 Hesap Silme Talebi</h2>
+            <p>Zaman Kumandası uygulamasından hesabınızı ve tüm verilerinizi silmek istiyorsanız, aşağıdaki adımları takip edebilirsiniz.</p>
+            
+            <div class="warning-box">
+                <strong>⚠️ UYARI:</strong> Hesabınızı sildikten sonra tüm verileriniz kalıcı olarak silinecek ve geri alınamayacaktır. Bu işlem şunları içerir:
+                <ul>
+                    <li>Kullanıcı hesap bilgileri</li>
+                    <li>Uygulama kullanım verileri</li>
+                    <li>Ebeveyn-çocuk bağlantıları</li>
+                    <li>Premium üyelik bilgileri</li>
+                    <li>Tüm ayarlar ve konfigürasyonlar</li>
+                </ul>
+            </div>
+            
+            <h3>🚀 Hesap Silme Adımları</h3>
+            <div class="steps">
+                <div class="step">
+                    <h4>E-posta Gönderimi</h4>
+                    <p>Aşağıdaki e-posta adresine hesap silme talebinizi gönderin.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Kimlik Doğrulama</h4>
+                    <p>Güvenlik için kayıtlı e-posta adresinizden talep göndermeniz gerekmektedir.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>İşlem Süresi</h4>
+                    <p>Talebiniz 48 saat içinde işleme alınır ve hesabınız kalıcı olarak silinir.</p>
+                </div>
+                
+                <div class="step">
+                    <h4>Onay E-postası</h4>
+                    <p>Silme işlemi tamamlandığında size onay e-postası gönderilir.</p>
+                </div>
+            </div>
+            
+            <div class="contact-box">
+                <h3>📧 İletişim</h3>
+                <p>Hesap silme talebi için aşağıdaki e-posta adresine yazın:</p>
+                <a href="mailto:talhakara0@gmail.com?subject=Zaman%20Kumandası%20-%20Hesap%20Silme%20Talebi&body=Merhaba,%0D%0A%0D%0AZaman%20Kumandası%20uygulamasından%20hesabımı%20ve%20tüm%20verilerimi%20silmek%20istiyorum.%0D%0A%0D%0AKayıtlı%20E-posta:%20[E-POSTA%20ADRESİNİZ]%0D%0AKullanıcı%20Tipi:%20[Ebeveyn/Çocuk]%0D%0A%0D%0ATeşekkürler." class="email-link">
+                    📨 talhakara0@gmail.com
+                </a>
+                <p><small>Konu: "Zaman Kumandası - Hesap Silme Talebi"</small></p>
+            </div>
+            
+            <h3>📞 Alternatif İletişim Yöntemleri</h3>
+            <ul>
+                <li><strong>E-posta:</strong> talhakara0@gmail.com</li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/talhakara0" target="_blank">github.com/talhakara0</a></li>
+                <li><strong>Yanıt Süresi:</strong> 24-48 saat içinde</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <h3>🔒 Gizlilik Garantisi</h3>
+                <p>Hesap silme talebiniz işlendikten sonra tüm verileriniz güvenli bir şekilde sistemlerimizden kaldırılır ve hiçbir yerde saklanmaz.</p>
+            </div>
+            
+            <h3>❓ Sık Sorulan Sorular</h3>
+            
+            <h4>Hesabımı silersem premium üyeliğim ne olur?</h4>
+            <p>Premium üyeliğiniz iptal edilir. Google Play Store üzerinden iade talebi oluşturabilirsiniz.</p>
+            
+            <h4>Çocuk hesabımı nasıl silerim?</h4>
+            <p>Çocuk hesapları için ebeveyn hesabından talep gönderilmelidir.</p>
+            
+            <h4>Hesap silme işlemi ne kadar sürer?</h4>
+            <p>Talep aldığımız andan itibaren maksimum 48 saat içinde tüm verileriniz silinir.</p>
+            
+            <h4>Silinen hesabı geri alabilir miyim?</h4>
+            <p>Hayır, silme işlemi kalıcıdır ve geri alınamaz. Yeni bir hesap oluşturmanız gerekir.</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Zaman Kumandası | <a href="privacy.html" style="color: white;">Gizlilik Politikası</a></p>
+            <p>Ebeveyn Kontrol Uygulaması</p>
+        </div>
+    </div>
+</body>
+</html>
